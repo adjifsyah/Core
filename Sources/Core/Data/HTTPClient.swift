@@ -12,7 +12,7 @@ protocol HttpClient {
     func load(url: URL, method: String, params: [String: String]?) -> Observable<Data>
 }
 
-class NetworkConfiguration {
+public class NetworkConfiguration {
     static let shared: ((String, String) -> NetworkConfiguration) = { host, apiKey in
         NetworkConfiguration(host: host, apiKey: apiKey)
     }
