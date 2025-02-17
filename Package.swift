@@ -13,7 +13,7 @@ let package = Package(
             targets: ["Core"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/realm/realm-swift", branch: "master"),
+        .package(url: "https://github.com/realm/realm-cocoa.git", branch: "master"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
     ],
     targets: [
@@ -22,7 +22,7 @@ let package = Package(
         .target(
             name: "Core",
             dependencies: [
-                .product(name: "Realm", package: "realm"),
+                .product(name: "Realm", package: "realm-cocoa"),
                 .product(name: "RxCocoa", package: "RxSwift"),
             ]
         ),

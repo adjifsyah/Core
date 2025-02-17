@@ -1,6 +1,15 @@
 {
-  "originHash" : "47f1c9fd21354e70da4573210e3825513c95c035f026b541e837b1bc973799cb",
+  "originHash" : "cdce279fa85c1663ee5ad3ca8691b4508d4638d5e13250af6ac24fb39c511a2f",
   "pins" : [
+    {
+      "identity" : "realm-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-cocoa.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "1f09fb14dd9d275b5686016fe8508d491b87cb0b"
+      }
+    },
     {
       "identity" : "realm-core",
       "kind" : "remoteSourceControl",
@@ -8,15 +17,6 @@
       "state" : {
         "revision" : "85eeca41654cc9070ad81a21a4b1d153ad467c33",
         "version" : "14.13.1"
-      }
-    },
-    {
-      "identity" : "realm-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/realm/realm-swift",
-      "state" : {
-        "branch" : "master",
-        "revision" : "1f09fb14dd9d275b5686016fe8508d491b87cb0b"
       }
     },
     {
