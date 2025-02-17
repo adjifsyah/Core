@@ -13,8 +13,8 @@ let package = Package(
             targets: ["Core"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
         .package(url: "https://github.com/realm/realm-swift", branch: "master"),
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -22,8 +22,8 @@ let package = Package(
         .target(
             name: "Core",
             dependencies: [
-                .product(name: "RxCocoa", package: "RxSwift"),
                 .product(name: "RealmSwift", package: "realm-swift"),
+                .product(name: "RxCocoa", package: "RxSwift"),
             ]
         ),
         .testTarget(
