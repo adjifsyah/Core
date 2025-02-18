@@ -9,7 +9,7 @@ final class CoreTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        client = AlamofireClients()
+        client = AlamofireClient()
         let url = URL(string: "https://example.com")!
         urlRequest = try? URLRequest(url: url, method: .get)
         disposeBag = DisposeBag()
@@ -26,7 +26,7 @@ final class CoreTests: XCTestCase {
     func testAlamofire_whenGivenData_shouldReturnTrue() {
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [MockURLProtocol.self]
-        client = AlamofireClients(URLSessionConfig: config)
+        client = AlamofireClient(URLSessionConfig: config)
         
         let mockResponseData = "{\"status\": \"ok\"}"
         MockURLProtocol.stubResponseData = mockResponseData.data(using: .utf8)

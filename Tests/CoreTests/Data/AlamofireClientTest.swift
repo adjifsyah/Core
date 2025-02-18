@@ -17,7 +17,7 @@ final class AlamofireClientTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        client = AlamofireClients()
+        client = AlamofireClient()
         urlRequest = MockMovieEndpoint.list.urlRequest
         disposeBag = DisposeBag()
     }
@@ -33,7 +33,7 @@ final class AlamofireClientTest: XCTestCase {
     func testAlamofire_whenGivenData_shouldReturnTrue() {
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [MockURLProtocol.self]
-        client = AlamofireClients(URLSessionConfig: config)
+        client = AlamofireClient(URLSessionConfig: config)
         
         let mockResponseData = "{\"status\": \"ok\"}"
         MockURLProtocol.stubResponseData = mockResponseData.data(using: .utf8)
@@ -53,7 +53,7 @@ final class AlamofireClientTest: XCTestCase {
     func testAlamofire_whenGivenNoData_shouldReturnError() {
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [MockURLProtocol.self]
-        client = AlamofireClients(URLSessionConfig: config)
+        client = AlamofireClient(URLSessionConfig: config)
         
         MockURLProtocol.stubError = NSError(domain: "MockError", code: 1001)
         
