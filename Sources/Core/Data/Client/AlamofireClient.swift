@@ -5,11 +5,11 @@
 //  Created by Apple Josal on 17/02/25.
 //
 
-import Foundation
-import Alamofire
 import RxSwift
+import Alamofire
+import Foundation
 
-public class AlamofireClients: HttpClient {
+public class AlamofireClient: HttpClient {
     var session: Session?
     
     public init(URLSessionConfig configuration: URLSessionConfiguration = URLSessionConfiguration.default, timeoutInterval: TimeInterval = 120) {
@@ -18,14 +18,13 @@ public class AlamofireClients: HttpClient {
             self.session = Session(configuration: configuration)
     }
     
-    func load(url: URL, method: String, params: [String: String]?) -> Observable<Data> {
-        return Observable<Data>.create { observer in
-            self.session?.request(url, method: HTTPMethod(rawValue: method), parameters: params)
-                .responseData { result in
-                    switch result.result {
-                    case .success(let data):
-                        observer.onNext(data)
-                        observer.onCompleted()
+    public func load<T: Decodable>(request: URLRequest) -> Observable<T> {
+        return Observable<T>.create { observer in
+            self.session?.request(request)
+                .responseDecodable(of: T.self) { response in
+                    switch response.result {
+                    case .success(let result):
+                        observer.onNext(result)
                     case .failure(let failure):
                         observer.onError(failure)
                     }

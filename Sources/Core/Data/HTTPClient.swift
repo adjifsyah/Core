@@ -8,10 +8,11 @@
 import Foundation
 import RxSwift
 
-protocol HttpClient {
-    func load(url: URL, method: String, params: [String: String]?) -> Observable<Data>
+public protocol HttpClient {
+    func load<T: Decodable>(request: URLRequest) -> Observable<T>
 }
 
+/*
 public class NetworkConfiguration {
     static let shared: ((String, String) -> NetworkConfiguration) = { host, apiKey in
         NetworkConfiguration(host: host, apiKey: apiKey)
@@ -28,3 +29,4 @@ public class NetworkConfiguration {
     var host: String
     var apiKey: String
 }
+*/
