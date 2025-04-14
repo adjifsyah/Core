@@ -8,6 +8,7 @@
 import RxSwift
 import Alamofire
 import Foundation
+import Core
 
 public class AlamofireClient: HttpClient {
     var session: Session?
@@ -18,13 +19,17 @@ public class AlamofireClient: HttpClient {
             self.session = Session(configuration: configuration)
     }
     
-    public func load<T: Decodable>(request: URLRequest) -> Observable<T> {
-        return Observable<T>.create { observer in
+    public func load(request: URLRequest) -> Observable<Data> {
+        return Observable<Data>.create { observer in
             self.session?.request(request)
-                .responseDecodable(of: T.self) { response in
+                .response { response in
                     switch response.result {
-                    case .success(let result):
-                        observer.onNext(result)
+                    case .success(let data):
+                        if let data {
+                            observer.onNext(data)
+                        } else {
+                            observer.onError(NSError(domain: "Unknown data", code: 1001))
+                        }
                     case .failure(let failure):
                         observer.onError(failure)
                     }

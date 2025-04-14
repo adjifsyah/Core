@@ -8,16 +8,16 @@
 import Foundation
 import RxSwift
 
-public class GetListPresenter<Request, Response, Interactor: UseCase>: ObservableObject where Interactor.Request == Request, Interactor.Response == [Response] {
+public class GetListPresenter<Request, Response, Interactor: UseCases>: ObservableObject where Interactor.Request == Request, Interactor.Response == [Response] {
     
     private let disposeBag = DisposeBag()
     private let useCase: Interactor
     
-    @Published var list: [Response] = []
-    @Published var msgError: String = ""
+    @Published public var list: [Response] = []
+    @Published public var msgError: String = ""
     
-    @Published var isLoading: Bool = false
-    @Published var isAlert: Bool = false
+    @Published public var isLoading: Bool = false
+    @Published public var isAlert: Bool = false
     
     public init(useCase: Interactor) {
         self.useCase = useCase

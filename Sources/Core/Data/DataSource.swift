@@ -13,3 +13,7 @@ public protocol DataSource {
     
     func execute(request: Request?) -> Observable<Response>
 }
+
+public protocol RemoteDataSourceLmpl {
+    func load<D: Decodable>(endpoint: String, method: String, params: [String: String]?) -> Observable<D>
+}

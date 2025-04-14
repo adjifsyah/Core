@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-public protocol UseCase {
+public protocol UseCases {
     associatedtype Request
     associatedtype Response
     

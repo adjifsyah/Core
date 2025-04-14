@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 public protocol HttpClient {
-    func load<T: Decodable>(request: URLRequest) -> Observable<T>
+    func load(request: URLRequest) -> Observable<Data>
 }
 
 /*
