@@ -40,6 +40,10 @@ final class AlamofireClientTest: XCTestCase {
         
         let expectation = XCTestExpectation(description: "Observer should receive data")
         client.load(request: urlRequest)
+            .map { data -> MockMovieResponse in
+                let decoded = try JSONDecoder().decode(MockMovieResponse.self, from: data)
+                return decoded
+            }
             .observe(on: MainScheduler.instance)
             .subscribe { (response: MockMovieResponse) in
                 XCTAssertEqual(response.status, "ok")
@@ -59,6 +63,10 @@ final class AlamofireClientTest: XCTestCase {
         
         let expectation = XCTestExpectation(description: "Observer should receive data")
         client.load(request: urlRequest)
+            .map { data -> MockMovieResponse in
+                let decoded = try JSONDecoder().decode(MockMovieResponse.self, from: data)
+                return decoded
+            }
             .observe(on: MainScheduler.instance)
             .subscribe { (_: MockMovieResponse) in
                 XCTFail()

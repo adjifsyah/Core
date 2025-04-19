@@ -70,7 +70,7 @@ class GetListPresenterTests: XCTestCase {
     }
 }
 
-class MockUseCase: UseCase {
+class MockUseCase: UseCases {
     typealias Request = String
     typealias Response = [String]
     
